@@ -94,44 +94,45 @@ const InterviewCoach = ({ showMarkers, showFaceMesh }) => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-        if (showMarkers && showFaceMesh) {
-          const currentTime = performance.now();
-          const faceResults = faceLandmarker.detectForVideo(video, currentTime);
-          
-          if (faceResults.faceLandmarks) {
-            const landmarks = faceResults.faceLandmarks[0];
-            if (landmarks) {
-              // Update metrics and feedback less frequently
-              if (currentTime - lastUpdateTime > updateInterval) {
-                lastUpdateTime = currentTime;
-                
-                // Analyze face direction
-                const nose = landmarks[4];
-                const eyeContactScore = 1 - Math.min(Math.abs(nose.z) * 5, 1);
-                
-                updateMetrics({
-                  eyeContact: eyeContactScore,
-                  overall: eyeContactScore
-                });
+        // Always run detection and analysis
+        const currentTime = performance.now();
+        const faceResults = faceLandmarker.detectForVideo(video, currentTime);
+        
+        if (faceResults.faceLandmarks) {
+          const landmarks = faceResults.faceLandmarks[0];
+          if (landmarks) {
+            // Update metrics and feedback less frequently
+            if (currentTime - lastUpdateTime > updateInterval) {
+              lastUpdateTime = currentTime;
+              
+              // Analyze face direction
+              const nose = landmarks[4];
+              const eyeContactScore = 1 - Math.min(Math.abs(nose.z) * 5, 1);
+              
+              updateMetrics({
+                eyeContact: eyeContactScore,
+                overall: eyeContactScore
+              });
 
-                updateFeedback(Math.abs(nose.z) > 0.1 
-                  ? ["Try to face the camera directly"]
-                  : ["Good eye contact!"]);
+              updateFeedback(Math.abs(nose.z) > 0.1 
+                ? ["Try to face the camera directly"]
+                : ["Good eye contact!"]);
 
-                // Update blend shapes
-                if (faceResults.faceBlendshapes?.length > 0) {
-                  const shapes = faceResults.faceBlendshapes[0].categories
-                    .map(shape => ({
-                      categoryName: shape.categoryName,
-                      score: shape.score
-                    }))
-                    .filter(shape => shape.score > 0.1);
-                  
-                  updateBlendShapes(shapes);
-                }
+              // Update blend shapes
+              if (faceResults.faceBlendshapes?.length > 0) {
+                const shapes = faceResults.faceBlendshapes[0].categories
+                  .map(shape => ({
+                    categoryName: shape.categoryName,
+                    score: shape.score
+                  }))
+                  .filter(shape => shape.score > 0.1);
+                
+                updateBlendShapes(shapes);
               }
+            }
 
-              // Draw landmarks
+            // Only draw landmarks if showMarkers and showFaceMesh are true
+            if (showMarkers && showFaceMesh) {
               for (const landmarks of faceResults.faceLandmarks) {
                 drawingUtils.drawConnectors(
                   landmarks,
