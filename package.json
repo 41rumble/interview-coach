@@ -29,8 +29,7 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ],
-    "ignorePatterns": ["node_modules/@mediapipe/**/*"]
+    ]
   },
   "browserslist": {
     "production": [
