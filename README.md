@@ -1,70 +1,130 @@
-# Getting Started with Create React App
+# Interview Coach AI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An innovative real-time interview coaching application that uses computer vision and AI to help you improve your interview performance. The app analyzes your facial expressions, eye contact, and body language in real-time, providing instant feedback to help you present yourself more confidently during interviews.
 
-## Available Scripts
+## Why This Matters
 
-In the project directory, you can run:
+During interviews, non-verbal communication plays a crucial role:
+- 55% of first impressions are based on body language and facial expressions
+- Maintaining appropriate eye contact increases your chances of success by 41%
+- Confident posture can improve both interviewer perception and your own performance
 
-### `npm start`
+This tool helps you practice and improve these critical aspects of interviewing.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Core Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Real-time Analysis
+- **Face Tracking**: Advanced facial landmark detection
+- **Eye Contact Monitoring**: Tracks gaze direction and engagement
+- **Expression Analysis**: Identifies and measures facial expressions
+- **Performance Metrics**: Real-time scoring of key interview behaviors
 
-### `npm test`
+### Smart Feedback
+- Instant suggestions for improvement
+- Eye contact quality assessment
+- Expression appropriateness guidance
+- Overall performance scoring
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Interactive Interface
+- Live video feed with optional visual guides
+- Real-time performance metrics
+- Expression analysis dashboard
+- Toggle-able visual markers for different tracking features
 
-### `npm run build`
+## Technical Implementation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Technology Stack
+- **Frontend**: React with Material-UI
+- **Computer Vision**: MediaPipe Tasks Vision
+- **Performance**: GPU-accelerated processing
+- **Real-time Processing**: WebGL and optimized rendering
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Key Technical Features
+- GPU-accelerated face detection and tracking
+- Efficient canvas rendering
+- Throttled state updates for smooth performance
+- Separated visualization from analysis pipeline
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Getting Started
 
-### `npm run eject`
+### Prerequisites
+- Node.js (v14 or higher)
+- Modern web browser with WebGL support
+- Webcam access
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Installation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Clone the repository:
+```bash
+git clone https://github.com/41rumble/interview-coach.git
+cd interview-coach
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Start the development server:
+```bash
+npm start
+```
 
-## Learn More
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Usage Guide
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. **Initial Setup**
+   - Grant camera access when prompted
+   - Position yourself in good lighting
+   - Ensure your face is clearly visible
 
-### Code Splitting
+2. **Using the Interface**
+   - Toggle visual guides with the switches at the top
+   - Monitor your metrics in the right panel
+   - Review real-time feedback
+   - Check expression analysis
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3. **Practice Sessions**
+   - Start with visual guides enabled to understand the tracking
+   - Practice maintaining eye contact
+   - Work on appropriate expressions
+   - Review your performance metrics
 
-### Analyzing the Bundle Size
+## Performance Optimization
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The application is optimized for real-time performance:
+- Face detection runs continuously for analysis
+- Visual overlays can be toggled without affecting analysis
+- State updates are throttled to maintain smooth performance
+- GPU acceleration for computer vision tasks
 
-### Making a Progressive Web App
+## Future Enhancements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Planned features include:
+- Full body language analysis
+- Voice tone analysis
+- Question practice mode
+- Session recording and playback
+- Detailed performance reports
+- AI-powered interview simulation
 
-### Advanced Configuration
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+We welcome contributions! Whether it's:
+- Bug reports
+- Feature suggestions
+- Code contributions
+- Documentation improvements
 
-### Deployment
+Please feel free to open issues or submit pull requests.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## License
 
-### `npm run build` fails to minify
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Acknowledgments
+
+- MediaPipe team for their excellent computer vision tools
+- React community for the robust framework
+- Material-UI team for the beautiful components
